@@ -18,10 +18,21 @@
     // Simpan file foto di folder photos/
     // ============================================
     const PRELOADED_PHOTOS = [
-        // Contoh (uncomment & ganti dengan foto lo):
-        // { file: 'foto1.jpg', caption: 'Kenangan pertama kita 💕' },
-        // { file: 'foto2.jpg', caption: 'Momen bahagia bersama ✨' },
-        // { file: 'foto3.jpg', caption: 'Date night 🌙' },
+        { file: 'foto1.jpg', caption: 'KAKI SIAPA INI NYAKKK' },
+        { file: 'foto2.jpg', caption: 'INI PULANG DARI BAKMIE YANG AKU JEMPUT KAMU PAS BUKBERRR' },
+        { file: 'foto3.jpg', caption: 'INI DI TEMPAT BIASA KITA GYMNASSS, LOVE GYMNASS' },
+        { file: 'foto4.jpg', caption: 'HAPPY VALENTINE!!!! DAN DI SINI AKU JD KETAGIHAN WINGS O WING WKWKWKWK' },
+        { file: 'foto5.jpg', caption: 'LAHHHH YANG ABIS BERANTEM YAKK' },
+        { file: 'foto6.jpg', caption: 'NAHHH INI DEH PAS AKU JUARAAA' },
+        { file: 'foto7.jpg', caption: 'JUJURRR INI PAS APA YAAA, INI YANG PAS AKU JUARA ATAU BUKAN YAKKK' },
+        { file: 'foto8.jpg', caption: 'AKU NYAMPERIN KAMUU LG NUGASSS SETALAH AKU SUPPORTERANN' },
+        { file: 'foto9.jpg', caption: 'INI DI ISHOLA YANG DIUSIR SATPAM WKWKWKWK' },
+        { file: 'foto10.jpg', caption: 'ini cafe di duta setelah kita berantem lama heheheh yang kamu ninggalin itu ke bandung sama tangerang' },
+        { file: 'foto11.jpg', caption: 'JUJURRR DI SINI AKU DEG DEG AN BGT DISENDERIN KAMU AFOAEOAHDW' },
+        { file: 'foto12.jpg', caption: 'FOTOBOOTH PERTAMA KITAAA' },
+        { file: 'foto13.jpg', caption: 'iniii pas kemarinn kemarinnn lucu bgt yak kita' },
+        { file: 'foto14.jpg', caption: 'hmm hari apa yak ini wkwkwk setelah ini ada something lah kita awlkaowak tp jujur ini kamu cantik bangett' },
+        { file: 'foto15.jpg', caption: 'ini pertama kali kita mainn tauu walaupun aku kedoknya belajar wkwkwk' }
     ];
 
     // --- State ---
