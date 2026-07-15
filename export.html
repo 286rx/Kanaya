@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export Photos</title>
+    <style>
+        body { font-family: sans-serif; padding: 2rem; background: #1a1a2e; color: #eee; }
+        h1 { color: #f9a8d4; }
+        button { padding: 1rem 2rem; font-size: 1.1rem; background: #ec4899; color: white; border: none; border-radius: 12px; cursor: pointer; margin: 1rem 0; }
+        button:hover { background: #db2777; }
+        .status { margin: 1rem 0; padding: 1rem; background: #2a2a4a; border-radius: 8px; }
+        .photo-item { display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; padding: 0.5rem; background: #2a2a4a; border-radius: 8px; }
+        .photo-item img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; }
+        pre { background: #2a2a4a; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <h1>📸 Export Foto dari LocalStorage</h1>
+    <button id="exportBtn">⬇️ Download Semua Foto</button>
+    <div class="status" id="status">Klik tombol di atas untuk export...</div>
+    <div id="photoList"></div>
+    <h2 style="margin-top:2rem;">📋 Copy kode ini untuk app.js:</h2>
+    <pre id="codeOutput">Klik export dulu...</pre>
+
+    <script>
+        document.getElementById('exportBtn').addEventListener('click', async () => {
+            const data = localStorage.getItem('kanaya_album_photos');
+            if (!data) {
+                document.getElementById('status').textContent = '❌ Tidak ada foto di localStorage!';
+                return;
+            }
+
+            const photos = JSON.parse(data);
+            const status = document.getElementById('status');
+            const photoList = document.getElementById('photoList');
+            const codeOutput = document.getElementById('codeOutput');
+
+            status.textContent = `📸 Ditemukan ${photos.length} foto. Downloading...`;
+            photoList.innerHTML = '';
+
+            const configLines = [];
+
+            for (let i = 0; i < photos.length; i++) {
+                const photo = photos[i];
+                const fileName = `foto${i + 1}.jpg`;
+
+                // Convert base64 to blob and download
+                const response = await fetch(photo.src);
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // Build config line
+                const caption = (photo.caption || '').replace(/'/g, "\\'");
+                configLines.push(`        { file: '${fileName}', caption: '${caption}' }`);
+
+                // Show in list
+                const item = document.createElement('div');
+                item.className = 'photo-item';
+                item.innerHTML = `<img src="${photo.src}"><span>✅ ${fileName} — ${photo.caption || '(no caption)'}</span>`;
+                photoList.appendChild(item);
+
+                // Small delay between downloads
+                await new Promise(r => setTimeout(r, 300));
+            }
+
+            status.textContent = `✅ ${photos.length} foto berhasil di-download! Pindahkan ke folder photos/`;
+
+            // Generate code
+            codeOutput.textContent = `const PRELOADED_PHOTOS = [\n${configLines.join(',\n')}\n    ];`;
+        });
+    </script>
+</body>
+</html>

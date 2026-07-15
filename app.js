@@ -32,7 +32,7 @@
         { file: 'foto12.jpg', caption: 'FOTOBOOTH PERTAMA KITAAA' },
         { file: 'foto13.jpg', caption: 'iniii pas kemarinn kemarinnn lucu bgt yak kita' },
         { file: 'foto14.jpg', caption: 'hmm hari apa yak ini wkwkwk setelah ini ada something lah kita awlkaowak tp jujur ini kamu cantik bangett' },
-        { file: 'foto15.jpg', caption: 'ini pertama kali kita mainn tauu walaupun aku kedoknya belajar wkwkwk' }
+        { file: 'foto15.jpg', caption: 'ini pertama kali kita mainn tauu walaupun aku kedoknya belajar wkwkwk' },
     ];
 
     // --- State ---
